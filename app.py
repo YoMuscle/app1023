@@ -84,7 +84,8 @@ def api_delete_post(post_id):
     db.session.commit()
     return jsonify({'result': 'deleted'})
 
+with app.app_context():
+    db.create_all()
+    
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
